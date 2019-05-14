@@ -24,7 +24,7 @@ $("button").on("click", function() {
 
           var p = $("<p>").text("Results : " + results[i].rating)
             
-            charImage = $("<img>")
+            charImage = $("<img>").addClass("characterImage")
             charImage.attr("src" , results[i].images.fixed_height.url)
             charImage.attr('data-animate', results[i].images.fixed_height.url)
             charImage.attr('data-still', results[i].images.fixed_height.url)
@@ -36,7 +36,19 @@ $("button").on("click", function() {
 
         };
 
+        $(".characterImage").on("Click", function () {
 
+            var image = $(this).attr('data-image')
+
+            if (image === 'still') {
+              
+              $(this).attr('src', $(this).data('animate'))
+              $(this).attr('data-image', 'animate')
+            } else {
+              $(this).attr('src', $(this).data('still'))
+              $(this).attr('data-image', 'still')
+            } 
+      })
 
     })
 
